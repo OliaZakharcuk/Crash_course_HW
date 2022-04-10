@@ -1,52 +1,63 @@
+//
 package com.company;
 import java.io.*;
-public class Main {
+import java.util.Scanner;
+public class Main
+{
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException
+    {
+        //1
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter number: ");
-        String n = reader.readLine();
+        System.out.println("Enter radius: ");
+	    String radius = reader.readLine();
+        Float radius_float = Float.parseFloat(radius);
+        double area = Math.PI * (radius_float * radius_float);
+        System.out.println("area : " + area);
+        double circumference= Math.PI * 2*radius_float;
+        System.out.println("parimetre: " + circumference);
 
-        Integer n_to_int = Integer.parseInt(n);
-        Integer n_cube = n_to_int * n_to_int * n_to_int;
-        String n_cube_str = Integer.toString(n_cube);
+        //2
+        String name;
+        String address;
+        System.out.println("What is your name?");
+        Scanner scanner = new Scanner(System.in);
+        name = scanner.nextLine();
+        String firstLetter = name.substring(0, 1);
+        String remainingLetters = name.substring(1, name.length());
+        firstLetter = firstLetter.toUpperCase();
+        name = firstLetter + remainingLetters;
+        System.out.println("Where are you from, " + name +  "?");
+        address = scanner.nextLine();
+        String firstLetter2 = address.substring(0, 1);
+        String remainingLetters2 = address.substring(1, address.length());
+        firstLetter2 = firstLetter2.toUpperCase();
+        address = firstLetter2 + remainingLetters2;
+        System.out.println("Nice to meet you , " + name +  ", from " + address + "!");
 
-        System.out.println("n = " + n_to_int);
-        System.out.println("n^3 = " + n_cube);
+        //3
+        int c1_per_minute;
+        int c2_per_minute;
+        int c3_per_minute;
+        int time1;
+        int time2;
+        int time3;
+        System.out.println("Enter price for minute for 1 country: ");
+        c1_per_minute = scanner.nextInt();
+        System.out.println("Enter price for minute for 2 country: ");
+        c2_per_minute = scanner.nextInt();
+        System.out.println("Enter price for minute for 3 country: ");
+        c3_per_minute = scanner.nextInt();
+        System.out.println("Enter time of talk for 1 country: ");
+        time1 = scanner.nextInt();
+        System.out.println("Enter time of talk for 2 country: ");
+        time2 = scanner.nextInt();
+        System.out.println("Enter time of talk for 3 country: ");
+        time3 = scanner.nextInt();
 
-        //Find if n is in n^3
-        if (n_cube_str.indexOf(n) == -1){
-            System.out.println("Number " + n + " is not in the " + n_cube_str);
-        }else {
-            System.out.println("Number " + n + " is in the " + n_cube_str);
-        }
+        System.out.println("Price for 1 talk:" + c1_per_minute * time1);
+        System.out.println("Price for 2 talk:" + c2_per_minute * time2);
+        System.out.println("Price for 3 talk:" + c3_per_minute * time3);
 
-
-        //Reverte n^3
-        String res = "";
-        char temp;
-        for( int i = 0; i < n_cube_str.length();i++)
-        {
-            temp = n_cube_str.charAt(i);
-            res = temp + res;
-        }
-        Integer res_int = Integer.parseInt(res);
-        System.out.println("Reverted: " + res_int);
-
-        //Change first and last sumbol
-        String new_str = "";
-        temp = n_cube_str.charAt(n_cube_str.length()-1);
-        new_str = new_str + temp;
-        new_str = new_str + n_cube_str.substring(1,n_cube_str.length() - 1);
-        temp = n_cube_str.charAt(0);
-        new_str = new_str + temp;
-        Integer new_str_int = Integer.parseInt(new_str);
-        System.out.println("Changed first and last sumbol: " + new_str_int);
-
-        //Add 1s
-        new_str = "1";
-        new_str = new_str + n_cube_str + "1";
-        Integer new_str_int_with1 = Integer.parseInt(new_str);
-        System.out.println("Added 1s: " + new_str_int_with1);
     }
 }
